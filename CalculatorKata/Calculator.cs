@@ -15,7 +15,7 @@ namespace CalculatorKata
             {
                 numbers = AddNextNumberToSum(numbers);
             }
-            sum += SumOfZeroOrOneNumbers(numbers);
+            AddZeroOrOneNumberToSum(numbers);
 
             return sum;
         }
@@ -25,8 +25,6 @@ namespace CalculatorKata
         private string AddNextNumberToSum(string s)
         {
             int pos = 0;
-
-
             while (s.Substring(pos, 1) != ",")
             {
                 pos++;
@@ -35,13 +33,12 @@ namespace CalculatorKata
             return s.Substring(pos + 1);
         }
 
-        private int SumOfZeroOrOneNumbers(string s)
+        private void AddZeroOrOneNumberToSum(string s)
         {
-            if (s.Length == 0)
+            if (s.Length != 0)
             {
-                return 0;
+                sum += Convert.ToInt16(s);
             }
-            return Convert.ToInt16(s);
         }
 
 
