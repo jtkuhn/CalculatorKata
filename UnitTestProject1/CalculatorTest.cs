@@ -24,8 +24,9 @@ namespace CalculatorKataTest
         [Test]
         public void TestOneNumber()
         {
-            Assert.AreEqual(calculator.Add("1"), 1);
+            Assert.AreEqual(calculator.Add("12"), 12);
         }
+
 
         [TestCase(3, "1,2")]
         [TestCase(12, "5,7")]
@@ -41,6 +42,12 @@ namespace CalculatorKataTest
         public void TestThreeNumbers(int number, String numberString)
         {
             Assert.AreEqual(number, calculator.Add(numberString));
+        }
+
+        [Test]
+        public void TestNewLineSeparator()
+        {
+            Assert.AreEqual(5, "1\n4");
         }
 
     }

@@ -11,45 +11,37 @@ namespace CalculatorKata
         {
             sum = 0;
 
-            if (numbers.Length == 1 || numbers.Length == 0)
-            {
-                return SumOfZeroOrOneNumbers(numbers);
-            }
-
             while (numbers.Contains(","))
             {
-                numbers = GetNextNumber(numbers);
+                numbers = AddNextNumberToSum(numbers);
             }
-            sum += Convert.ToInt16(numbers);
+            sum += SumOfZeroOrOneNumbers(numbers);
 
             return sum;
         }
 
 
 
-        private string GetNextNumber(string s)
+        private string AddNextNumberToSum(string s)
         {
-            StringBuilder sb = new StringBuilder();
             int pos = 0;
 
 
             while (s.Substring(pos, 1) != ",")
             {
-                sb.Append(s.Substring(pos, 1));
                 pos++;
             }
-            sum += Convert.ToInt16(sb.ToString());
-            sb.Clear();
+            sum += Convert.ToInt16(s.Substring(0, pos));
             return s.Substring(pos + 1);
         }
 
         private int SumOfZeroOrOneNumbers(string s)
         {
-            if (s.Length == 1)
+            if (s.Length == 0)
             {
-                return Convert.ToInt16(s);
+                return 0;
             }
-            else return 0;
+            return Convert.ToInt16(s);
         }
 
 
